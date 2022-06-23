@@ -8,6 +8,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 
@@ -17,6 +18,8 @@ public class RootController implements Initializable {
 	@FXML
 	private Button btn2;
 	@FXML
+	private Button btn3;
+	@FXML
 	private TextField txf1;
 	@FXML
 	private TextField txf2;
@@ -24,10 +27,17 @@ public class RootController implements Initializable {
 	private TextField txf3;
 	
 	@FXML
+	private TextField txf4;
+	@FXML
+	private TextField txf5;
+	
+	@FXML
 	private TextArea result1;
 	@FXML
 	private TextArea result2;
 	
+	@FXML
+	private Label result3;
 	
 	EmpDao ed; // 객체 지정안하고 이렇게만. 여러 군데에서 쓸 용도로 세팅하는 방법인거같음
 
@@ -55,6 +65,16 @@ public class RootController implements Initializable {
 			}
 		});
 
+		btn3.setOnAction(e -> {
+			try {
+				handle3(e);
+			} catch (NumberFormatException | SQLException e1) {
+				e1.printStackTrace();
+			}
+		});
+		
+		
+
 	}
 
 	public void handle1(ActionEvent e) throws NumberFormatException, SQLException {
@@ -74,4 +94,13 @@ public class RootController implements Initializable {
 		
 	}
 
+	public void handle3(ActionEvent e) throws NumberFormatException, SQLException {
+
+		Emp emp = new Emp(Integer.parseInt(txf4.getText()), txf5.getText());
+		ed.input(emp);
+
+		result3.setText("등록이 완료되었습니다.");
+		
+	}
+	
 }
