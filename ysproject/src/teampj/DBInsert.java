@@ -1,3 +1,5 @@
+//v0.2 에서 해당 소스 제외됨. 쓰이지 않음.
+
 package teampj;
 
 import java.sql.Connection;
