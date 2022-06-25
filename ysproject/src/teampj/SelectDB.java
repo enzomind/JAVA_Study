@@ -1,3 +1,5 @@
+//v0.2 개편되며 해당 소스 사용안함
+
 package teampj;
 
 import java.sql.SQLException;
