@@ -21,24 +21,17 @@ public class RootController {
 		int cnum = scan.nextInt();
 
 //		if(cnum == 1) {
-//			
 //		}
 		
 		switch (cnum) {
 		case 1:	
-			
 			dao.selectDB();
-			
 			break;
 			
 		case 2:
 			System.out.printf("\n\n\n");
-			
-			
 			dao.insertDB();
-			
 			break;
 		}
 	}
-
 }

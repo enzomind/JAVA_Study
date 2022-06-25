@@ -15,6 +15,7 @@ public class DAO extends DBConn {
 	int j = 0;
 	Scanner sc = new Scanner(System.in);
 	PreparedStatement ps = null;
+	static int stunumber;
 	
 	
 	public ArrayList<Common> start() throws SQLException {
@@ -69,6 +70,8 @@ public class DAO extends DBConn {
 					}
 //					else if () {} // 엔터키가 아닌 키 방지용인데 구현 못하겠음;
 			}
+			stunumber = com.no;
+			
 		}
 		
 		RootController rc = new RootController();
@@ -77,9 +80,8 @@ public class DAO extends DBConn {
 	
 	public void insertDB() throws SQLException {
 
-		Scanner sc = new Scanner(System.in);
 		conn = DBConn.MYSQLDBC();
-		String sql = "insert into member(name, kor, math, eng) values(?,?,?,?)";
+		String sql = "insert into member(number, name, kor, math, eng, sumscore, avgscore) values(?,?,?,?,?,?,?)";
 		
 		System.out.println("=============================================");
 		System.out.println("새로운 학생의 성적을 등록합니다. ");
@@ -87,45 +89,54 @@ public class DAO extends DBConn {
 		
 		
 		while(true) {
+			try {
+				int kor; int math; int eng;
+				
+				
+				ps = conn.prepareStatement(sql);
+				System.out.println(stunumber);
+				ps.setInt(1, stunumber);
+				System.out.print("이름을 입력하세요 >> ");
+				ps.setString(2, sc.nextLine());
+				System.out.print("국어 점수를 입력하세요 >> ");
+				kor = sc.nextInt();
+				ps.setInt(3, kor);
+				System.out.print("수학 점수를 입력하세요 >> ");
+				math = sc.nextInt();
+				ps.setInt(4, math);
+				System.out.print("영어 점수를 입력하세요 >> ");
+				eng = sc.nextInt();
+				ps.setInt(5, eng);		
+				
+				int sumscore = kor + math + eng;
+				double avgscore = ((double) sumscore / 3); 
+			
+				ps.setInt(6, sumscore);
+				ps.setDouble(7, avgscore);
+				
+				int rowCount = ps.executeUpdate();
+			
+				if(rowCount == 1) {
+					System.out.println("등록이 정상적으로 완료되었습니다.");
+//					System.out.print("계속 등록하시려면 'YES'를, 그만하시려면 'NO'를 입력해 주세요.");
+//					String choose = sc.next();
+//					if(choose.equals("YES")) {
+//						continue;
+//					}
+					}else {
+						break;
+					}
+				}catch(SQLException e) {
+						e.printStackTrace();
+						System.out.println("업데이트 실패. 다시 시도하여 주십시오.");
+				}finally {
+					ps.close();
+					conn.close();
 		
-		try {
-			
-			ps = conn.prepareStatement(sql);
-			System.out.print("이름을 입력하세요 >> ");
-			ps.setString(1, sc.nextLine());
-			System.out.print("국어 점수를 입력하세요 >> ");
-			ps.setInt(2, sc.nextInt());
-			System.out.print("수학 점수를 입력하세요 >> ");
-			ps.setInt(3, sc.nextInt());
-			System.out.print("영어 점수를 입력하세요 >> ");
-			ps.setInt(4, sc.nextInt());
-			
-			int rowCount = ps.executeUpdate();
-			
-			if(rowCount == 1) {
-				System.out.println("등록이 정상적으로 완료되었습니다.");
-//				System.out.print("계속 등록하시려면 'YES'를, 그만하시려면 'NO'를 입력해 주세요.");
-//				String choose = sc.next();
-//				if(choose.equals("YES")) {
-//					continue;
-//				}
-			}else {
-				break;
+					DAO dao = new DAO();
+					dao.selectDB();
+				}
 			}
-			
-		}catch(SQLException e) {
-				e.printStackTrace();
-				System.out.println("업데이트 실패. 다시 시도하여 주십시오.");
-		}
-		
-		ps.close();
-		conn.close();
-		
-		
-		DAO dao = new DAO();
-		dao.selectDB();
-		
-		}
 	}
-	
 }
+			
