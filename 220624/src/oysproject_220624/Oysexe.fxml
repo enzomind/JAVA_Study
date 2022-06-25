@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.effect.*?>
+<?import javafx.scene.text.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.layout.AnchorPane?>
+
+<AnchorPane prefHeight="506.0" prefWidth="371.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="oysproject_220624.RootController">
+   <children>
+      <AnchorPane layoutX="60.0" layoutY="-100.0" prefHeight="200.0" prefWidth="200.0" />
+      <Label layoutX="26.0" layoutY="31.0" text="학번" />
+      <Label layoutX="26.0" layoutY="60.0" text="이름" />
+      
+      <TextField fx:id="inputnotxf" layoutX="66.0" layoutY="27.0" prefHeight="23.0" prefWidth="200.0" />
+      <TextField fx:id="inputnametxf" layoutX="66.0" layoutY="56.0" prefHeight="23.0" prefWidth="200.0" />
+      <Button fx:id="inputbtn" layoutX="276.0" layoutY="27.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="69.0" text="Button" />
+      
+      <Label layoutX="23.0" layoutY="126.0" text="학번" />
+      <Label layoutX="23.0" layoutY="155.0" text="이름" />
+      
+      <TextField fx:id="modifynotxf" layoutX="66.0" layoutY="122.0" prefHeight="23.0" prefWidth="200.0" />
+      <TextField fx:id="modifynametxf" layoutX="66.0" layoutY="151.0" prefHeight="23.0" prefWidth="200.0" />
+      <Button fx:id="modifybtn" layoutX="276.0" layoutY="122.0" mnemonicParsing="false" prefHeight="52.0" prefWidth="69.0" text="Button" />
+      <TableView fx:id="tb" layoutX="26.0" layoutY="251.0" prefHeight="200.0" prefWidth="320.0">
+        <columns>
+          <TableColumn fx:id="tbno" prefWidth="110.0" text="학번" />
+          <TableColumn fx:id="tbname" prefWidth="209.0" text="학생 이름" />
+        </columns>
+      </TableView>
+      
+      <Button fx:id="selectbtn" layoutX="27.0" layoutY="467.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="150.0" text="조회하기" />
+      
+      <Label layoutX="23.0" layoutY="7.0" text="신규등록" />
+      <Label layoutX="23.0" layoutY="100.0" text="정보수정" />
+      <Button layoutX="205.0" layoutY="467.0" mnemonicParsing="false" prefHeight="23.0" prefWidth="142.0" text="선택 항목 삭제" />
+      <Label fx:id="resultinfo" layoutX="23.0" layoutY="189.0" prefHeight="15.0" prefWidth="320.0" />
+     	
+   </children>
+</AnchorPane>
