@@ -7,8 +7,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import teamProject.School;
-
 public class DBConn {
 	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";  // mysql
 	static final String DB_URL = "jdbc:mysql://localhost:3306/teampj_db?useSSL=false"; 
