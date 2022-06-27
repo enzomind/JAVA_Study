@@ -15,6 +15,5 @@ public class EMP {
 	private IntegerProperty bno; //게시글번호
 	private StringProperty title; //게시글 타이틀
 	private StringProperty contents; //게시글 내용
-	
-	
+
 }
