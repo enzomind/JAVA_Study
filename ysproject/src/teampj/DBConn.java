@@ -7,9 +7,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import teamProject.School;
-
-public class ConnectDB {
+public class DBConn {
 	static final String JDBC_DRIVER = "com.mysql.cj.jdbc.Driver";  // mysql
 	static final String DB_URL = "jdbc:mysql://localhost:3306/teampj_db?useSSL=false"; 
 	static final String USERNAME = "root"; 
@@ -18,7 +16,6 @@ public class ConnectDB {
 	static Connection conn = null;
 	
 	public static Connection MYSQLDBC() throws SQLException {
-		
 		
 	
 		try {
