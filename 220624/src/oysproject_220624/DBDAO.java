@@ -9,7 +9,8 @@ import java.util.ArrayList;
 
 public class DBDAO {
 	private Connection conn;
-	String sql = null; //각 메소드의 SQL을 타이핑해야겠음
+	String sql = null; //각 메소드의 SQL을 타이핑해야겠음\
+	Statement stat;
 	PreparedStatement ps = null;
 	ResultSet rs = null;
 	
@@ -19,16 +20,17 @@ public class DBDAO {
 		return conn;
 	}
 	
-	//인풋을 해보자
+//	//인풋을 해보자
 	public int input(EMP emp) throws SQLException {
-		PreparedStatement ps = null;
-		String sql = "INSERT INTO oysemp (emp_no, emp_name) values (?,?)";
+				
+		sql = String.format("INSERT INTO oysemp (emp_no , emp_name) values (%d,%s)",emp.setNumber(number), emp.setName(name));
 		
-		ps = conn.prepareStatement(sql);
-		ps.setInt(1, emp.number); 
-		ps.setString(2, emp.name);
+		stat = conn.createStatement();
+//		ps = conn.prepareStatement(sql);
+//		ps.setInt(1, emp.number); 
+//		ps.setString(2, emp.name);
 		
-		int result = ps.executeUpdate(); 
+		int result = stat.executeUpdate(sql); 
 //		execute : 테이블 생성, 수정, 삭제 등 데이터베이스 관리 시, 사용 (create - )
 //		executeUpdate : 레코드 삽입, 수정, 삭제 등 데이터 조작 시, 사용 (insert, update, delete - )
 //		executeQuery : 레코드 조회, 테이블 조회 등 조회 명령어 사용 (select - )
@@ -58,13 +60,11 @@ public class DBDAO {
 	//데이터 받아오는 메소드 작성했으니 다시 여기까지하고 루트컨트롤러쪽 넘어가자!
 	
 	public int modify(EMP emp) throws SQLException {
-		sql = "UPDATE oysemp SET emp_name = ? where emp_no = ?";
+		sql = String.format("UPDATE oysemp SET emp_name = %s where emp_no = %d",emp.getName(), emp.getNumber());
 		
-		ps = conn.prepareStatement(sql);
-		ps.setString(1, emp.name);
-		ps.setInt(2, emp.number);
+		stat = conn.createStatement();
+		int result = stat.executeUpdate(sql);
 		
-		int result = ps.executeUpdate();
 		return result;
 	}
 	

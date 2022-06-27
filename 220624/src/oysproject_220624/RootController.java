@@ -175,27 +175,40 @@ public class RootController implements Initializable {
 //		boolean count = true;
 		
 //		while (count) {
-		for(EMP emp : dd.select()) {
-			
-//			() : 매개 변수 또는 조건 (ex. 휘발?)
+//		for(EMP emp : dd.select()) {
 //			
-//			{} : 지역 (ex. 메소드 or 클래스 or 반복문 등등 )
+////			() : 매개 변수 또는 조건 (ex. 휘발?)
+////			
+////			{} : 지역 (ex. 메소드 or 클래스 or 반복문 등등 )
+////			
+//			ObservableList<EMP> list = FXCollections.observableArrayList(new EMP(emp.number, emp.name));
+////			if(dd.select() != null )
+////				for(;dd.select().equals(null);)
+//		
+//			tbno.setCellValueFactory(new PropertyValueFactory<EMP, Integer>("number"));
+//			tbname.setCellValueFactory(new PropertyValueFactory<EMP, String>("name"));
 //			
-			ObservableList<EMP> list = FXCollections.observableArrayList(new EMP(emp.number, emp.name));
-//			if(dd.select() != null )
-//				for(;dd.select().equals(null);)
-		
-			tbno.setCellValueFactory(new PropertyValueFactory<EMP, Integer>("number"));
-			tbname.setCellValueFactory(new PropertyValueFactory<EMP, String>("name"));
-			
-			tb.setItems(list);
-			
+//			tb.setItems(list);
+//			
+////		}
 //		}
-		}
 		
 		//나오는데는 성공했지만 한줄밖에 안나와서 뭔가 카운트쓰는 부분을 구현해야 할 듯 함.
 		
+//		220627 재권님 소스 반영
 
+		ObservableList<EMP> list  = FXCollections.observableArrayList(dd.select());
+//		tbno.setCellValueFactory(cellData->cellData.getValue().getNumber());
+//		ObservableValue<Integer> obsInt = new ReadOnlyObjectWrapper<>(intValue);
+		
+		tbno.setCellValueFactory(cellData->cellData.getValue().getNumber().asObject());
+		tbname.setCellValueFactory(cellData->cellData.getValue().getName());
+		tb.setItems(list);
+		
+		
+//		오류 발생. number가 인트형인데 받아와지지 않음. and INSERT와 MODIFY의 GETTER부분에서 오류가 남.
+//		테스트 목적으로 name만 불러와보니 잘불러와짐. 
+		
 	}
 
 }
