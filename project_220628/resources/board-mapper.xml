@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="teamproject"> 
+	
+	
+	<!-- 오윤섭 작성 -->
+	<insert id = "insertMapper">
+	INSERT INTO board(mid, title, wcontents, div) VALUES(#{mid}, #{title}, #{wcontents}, #{div})
+	</insert>	
+	 
+	<select id = "selectlistMapper" resultType="project_220628.Board">
+	SELECT bno, mid, title, wcontents, wdate FROM board
+	</select>
+	 
+	<select id = "showDetailMapper" resultType="project_220628.Board">
+	SELECT bno, mid, title, wcontents, wdate FROM board WHERE bno = #{bno}
+	</select>
+	
+	
+	<!-- 오윤섭 작성 -->
+</mapper>
