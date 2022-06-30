@@ -2,18 +2,23 @@ package project_220628;
 
 public class Main {
 
+	static String mid ;
+	
 	public static void main(String[] ar) {
 
-		BoardInput input = new BoardInput();
-		BoardShow show = new BoardShow(); 
-		BoardDetail detail = new BoardDetail();
 		
-			
-		//입력 생략하고싶으면 아래 주석처리
+		Login login = new Login();
+		BoardShow show = new BoardShow();
+		BoardInput input = new BoardInput();
+		
+		mid = login.login();
+	
+		//게시판 입력 생략하고싶으면 아래 주석처리
 //		input.input();
 		
-		//게시판 조회
+		
 		show.show();
+		
 		
 	}
 

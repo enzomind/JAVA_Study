@@ -1,29 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org/DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
-<mapper namespace="teamproject"> 
-	
-	
+<mapper namespace="teamproject">
+
+	<select id="login" resultType="project_220628.Board" parameterType="project_220628.Board">
+		SELECT mid, mpw FROM member WHERE mid = #{mid} and mpw = #{mpw}
+	</select>
+
 	<!-- 오윤섭 작성 -->
-	<insert id = "insertMapper">
-	INSERT INTO board(mid, title, wcontents, div) VALUES(#{mid}, #{title}, #{wcontents}, #{div})
-	</insert>	
-	 
-	<select id = "selectlistMapper" resultType="project_220628.Board">
-	SELECT bno, mid, title, wcontents, wdate FROM board
+	<insert id="insert">
+		INSERT INTO board(mid, title, wcontents, div) VALUES(#{mid}, #{title},
+		#{wcontents}, #{div})
+	</insert>
+
+	<select id="selectList" resultType="project_220628.Board">
+		SELECT bno, mid, title, wcontents, wdate FROM board
 	</select>
-	 
-	<select id = "showDetailMapper" resultType="project_220628.Board">
-	SELECT bno, mid, title, wcontents, wdate FROM board WHERE bno = #{bno}
+
+	<select id="detail" resultType="project_220628.Board">
+		SELECT bno, mid, title, wcontents, wdate FROM board WHERE bno = #{bno}
 	</select>
-	
-	<update id = "modifyMapper">
-	UPDATE board SET title = #{title}, wcontents = #{wcontents} WHERE bno = #{bno}
+
+	<update id="modify">
+		UPDATE board SET title = #{title}, wcontents = #{wcontents} WHERE bno =
+		#{bno}
 	</update>
-	
-	<delete id="deleteMapper">
-	DELETE FROM board WHERE bno = #{bno} 
+
+	<delete id="delete">
+		DELETE FROM board WHERE bno = #{bno}
 	</delete>
 	
-	
+	<delete id="deleteSecure">
+		DELETE FROM board WHERE bno = #{bno} and mid = #{mid}
+	</delete>
+
+
 	<!-- 오윤섭 작성 -->
 </mapper>

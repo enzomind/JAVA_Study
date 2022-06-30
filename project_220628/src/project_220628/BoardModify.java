@@ -12,13 +12,13 @@ public class BoardModify {
 		System.out.println("수정하기 ==================================");
 
 		// 제목 수정
-		boardmodify.bno = bno;
+		boardmodify.setBno(bno);
 		System.out.print("제목을 입력하세요. >> ");
-		boardmodify.title = sc.nextLine();
+		boardmodify.setTitle(sc.nextLine());
 
 		// 내용 수정
 		System.out.print("내용을 입력하세요. >> ");
-		boardmodify.wcontents = sc.nextLine();
+		boardmodify.setWcontents(sc.nextLine());
 
 		int check = bds.modifyBoardData(boardmodify);
 

@@ -7,7 +7,7 @@ public class BoardDelete {
 		BoardService bds = new BoardService();
 		Board boarddelete = new Board();
 
-		boarddelete.bno = bno;
+		boarddelete.setBno(bno);
 
 		int check = bds.deleteBoardData(boarddelete);
 

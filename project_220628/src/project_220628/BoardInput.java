@@ -15,18 +15,18 @@ public class BoardInput {
 		System.out.println("3. 자유게시판 글 작성하기 =====================");
 		
 		// ID (추후 불러오는 것으로 구현)
-		boardinput.mid = "oh123";
+		boardinput.setMid(Main.mid);
 
 		// 제목 입력
 		System.out.print("제목을 입력하세요. >> ");
-		boardinput.title = sc.nextLine();
+		boardinput.setTitle(sc.nextLine());
 
 		// 내용 입력
 		System.out.print("내용을 입력하세요. >> ");
-		boardinput.wcontents = sc.nextLine();
+		boardinput.setWcontents(sc.nextLine());
 
 		// 게시판 유형 자동 지정
-		boardinput.div = "any";
+		boardinput.setDiv("any");
 	
 		int check = bds.insertBoardData(boardinput);
 		

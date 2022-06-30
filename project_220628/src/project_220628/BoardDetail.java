@@ -7,6 +7,7 @@ public class BoardDetail {
 	Scanner sc = new Scanner(System.in);
 	BoardService bds = new BoardService();
 	static int bno;
+	static String mid;
 	
 	public void datail() {
 
@@ -18,10 +19,10 @@ public class BoardDetail {
 
 			System.out.printf("\n\n\n");
 			for (Board boarddetail : bds.showDetail(getnumber)) {
-				System.out.printf("%s\t%s%d\n", "번호 ", ": ", boarddetail.bno);
-				System.out.printf("%s\t%s%s\n", "제목 ", ": ", boarddetail.title);
-				System.out.printf("%s\t%s%s\n", "작성자 ", ": ", boarddetail.mid);
-				System.out.printf("%s\t%s%s\n", "내용 ", ": ", boarddetail.wcontents);
+				System.out.printf("%s\t%s%d\n", "번호 ", ": ", boarddetail.getBno());
+				System.out.printf("%s\t%s%s\n", "제목 ", ": ", boarddetail.getTitle());
+				System.out.printf("%s\t%s%s\n", "작성자 ", ": ", boarddetail.getMid());
+				System.out.printf("%s\t%s%s\n", "내용 ", ": ", boarddetail.getWcontents());
 				// System.out.printf("%s\t%s%s\n\t%s%s\n", "내용 ", ": ",
 				// boarddetail.wcontents.substring(0, 30), " ",
 				// boarddetail.wcontents.substring(30, 58));
@@ -35,8 +36,8 @@ public class BoardDetail {
 				// 내용--
 				// 안녕하세요. 제가 질문이 하나 있는데요. 개인이 인텔리제이 무료버전을 사용하고 싶으면 어떻게 해야하나요?
 				
-				System.out.printf("%s\t%s%s\n", "작성일자 ", ": ", boarddetail.wdate.substring(0, 10));
-				bno = boarddetail.bno;
+				System.out.printf("%s\t%s%s\n", "작성일자 ", ": ", boarddetail.getWdate().substring(0, 10));
+				bno = boarddetail.getBno();
 				
 			}
 			// 선생님께 드릴 질문
@@ -44,25 +45,34 @@ public class BoardDetail {
 			// 들어왔을때, 너무많은 레인지를 잡게되면 에러가 남. 방법이 없는지?
 
 		}
-				
+		
 		System.out.print("해당 게시글을 수정하시려면 1을, 삭제하시려면 2를, 돌아가시려면 3을 입력해주세요. >> ");
 
-		int a = sc.nextInt();
-		switch (a) {
+		
+		switch (sc.nextInt()) {
 		
 		case 1 :
 			BoardModify modify = new BoardModify();
 			modify.modify(bno);
 			break;
 			
-		case 2 :
-			BoardDelete delete = new BoardDelete();
-			delete.delete(bno);
+//		case 2 :
+//			BoardDelete delete = new BoardDelete();
+//			delete.delete(bno);
+//			break;
+			
+		case 2 : 
+			BoardDeleteSecure secure = new BoardDeleteSecure();
+			secure.deleteSecure(bno, Main.mid);
 			break;
+			
 		
 		case 3 :
 			BoardShow show = new BoardShow();
 			show.show();		
+			
+		
+		
 		}
 
 	}

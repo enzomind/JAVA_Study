@@ -2,15 +2,30 @@ package project_220628;
 
 public class Board {
 	
+	private int bno;
+	private String mid;
+	private String title;
+	private String wcontents;
+	private String wdate;
+	private String div;
 	
-	int bno;
-	public String mid;
-	public String title;
-	public String wcontents;
-	public String wdate;
-	public String div;
+	private int mno;
+	private String mpw;
 	
 	
+	
+	public int getMno() {
+		return mno;
+	}
+	public void setMno(int mno) {
+		this.mno = mno;
+	}
+	public String getMpw() {
+		return mpw;
+	}
+	public void setMpw(String mpw) {
+		this.mpw = mpw;
+	}
 	public String getDiv() {
 		return div;
 	}
@@ -71,7 +86,16 @@ public class Board {
 		
 	}
 	
+	public Board(int bno, String mid) {
+		this.bno = bno;
+		this.mid = mid;
+	}
 	
+	public Board(String mid, String mpw) {
+		super();
+		this.mid = mid;
+		this.mpw = mpw;
+	}
 	@Override
 	public String toString() {
 		
