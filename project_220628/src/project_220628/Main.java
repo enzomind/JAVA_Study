@@ -15,9 +15,6 @@ public class Main {
 		//게시판 조회
 		show.show();
 		
-		
-
-		
 	}
 
 }
