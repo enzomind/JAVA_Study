@@ -1,5 +1,7 @@
 package project_220628;
 
+
+
 import java.util.List;
 
 import org.apache.ibatis.session.SqlSession;
@@ -19,10 +21,23 @@ public class BoardDao {
 	}
 
 
-	public List<Board> showDetail(SqlSession ses, Board board) {
+	public List<Board> showDetailDao(SqlSession ses, Board board) {
 		List<Board> result = ses.selectList("teamproject.showDetailMapper",board);
 		return result;
 	}
 
+	public int modifyDao(SqlSession ses, Board board) {
+		int result = ses.update("teamproject.modifyMapper", board);
+
+		return result;
+	}
+	
+	public int deleteDao(SqlSession ses, Board board) {
+		int result = ses.delete("teamproject.deleteMapper", board);
+		
+		return result;
+	}
+	
+	
 }
 

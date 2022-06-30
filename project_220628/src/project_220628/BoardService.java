@@ -1,5 +1,6 @@
 package project_220628;
 
+
 import java.util.List;
 import java.util.Scanner;
 
@@ -32,11 +33,36 @@ public class BoardService {
 	}
 	
 	public List<Board> showDetail(Board num) {
-		List<Board> list = bdao.showDetail(ses, num);
+		List<Board> list = bdao.showDetailDao(ses, num);
 		return list;
 	}
 	
+	public int modifyBoardData(Board board) {
+		 
+		int result = bdao.modifyDao(ses, board);
+		
+		if(result>0) {
+			ses.commit();
+		}else {
+			ses.rollback();
+		}
+		
+		ses.close();
+		
+		return result;
+	}
 	
-	
-	
+	public int deleteBoardData(Board board) {
+		
+		int result = bdao.deleteDao(ses, board);
+		
+		if(result>0) {
+			ses.commit();
+		}else {
+			ses.rollback();
+		}
+		
+		ses.close();
+		return result;
+	}
 }

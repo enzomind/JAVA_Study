@@ -16,6 +16,14 @@
 	SELECT bno, mid, title, wcontents, wdate FROM board WHERE bno = #{bno}
 	</select>
 	
+	<update id = "modifyMapper">
+	UPDATE board SET title = #{title}, wcontents = #{wcontents} WHERE bno = #{bno}
+	</update>
+	
+	<delete id="deleteMapper">
+	DELETE FROM board WHERE bno = #{bno} 
+	</delete>
+	
 	
 	<!-- 오윤섭 작성 -->
 </mapper>
